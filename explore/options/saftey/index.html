@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Travel Safety & Sustainability — Detailed Guidance</title>
+        <link rel="stylesheet" href="styles.css" />
+      </head>
+      <body>
+        <div class="app">
+          <header class="header">
+            <div class="brand">
+              <h1>Travel Safety & Sustainability — Detailed Guidance</h1>
+              <p class="tag">Tailored guidance based on provided URL parameters. Trip summary is hidden.</p>
+            </div>
+
+            <div class="controls">
+              <button id="copyBtn" class="btn">Copy link</button>
+              <button id="printBtn" class="btn">Print</button>
+              <button id="refreshBtn" class="btn">Refresh</button>
+            </div>
+          </header>
+
+          <main class="content" id="content">
+            <article class="card section" id="healthSection">
+              <h3>Health Advisories</h3>
+              <ul id="healthList" class="list"></ul>
+            </article>
+
+            <article class="card section" id="safetySection">
+              <h3>Safety Alerts</h3>
+              <ul id="safetyList" class="list"></ul>
+            </article>
+
+            <article class="card section" id="environmentSection">
+              <h3>Environmental Considerations</h3>
+              <ul id="environmentList" class="list"></ul>
+            </article>
+
+            <article class="card section" id="emergencySection">
+              <h3>Emergency Contacts & Healthcare</h3>
+              <ul id="emergencyList" class="list"></ul>
+            </article>
+
+            <article class="card section" id="tipsSection">
+              <h3>Travel Tips</h3>
+              <ul id="tipsList" class="list"></ul>
+            </article>
+
+            <div class="card sources" id="sources">
+              <h4>Primary sources & quick links</h4>
+              <ul id="sourceLinks" class="link-list"></ul>
+            </div>
+          </main>
+
+          <footer class="footer">
+            <small>This tool provides curated links and tailored search queries — confirm real-time advisories with official sites (WHO, CDC, national governments, embassies).</small>
+          </footer>
+        </div>
+
+        <script type="module" src="src/main.js"></script>
+      </body>
+    </html>

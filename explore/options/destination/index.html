@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Travel Planner — Search</title>
+
+        <!-- Tailwind CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+          tailwind.config = {
+            theme: {
+              extend: {
+                colors: { weatherBlue: '#36A2EB', warmAccent: '#FF6347', accent: '#5eead4', accent2: '#60a5fa' },
+                boxShadow: { 'soft-lg': '0 12px 40px rgba(2,6,23,0.6)' }
+              }
+            }
+          };
+        </script>
+
+        <!-- Open Sans -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+        <!-- Leaflet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin />
+
+        <link rel="stylesheet" href="src/styles.css" />
+      </head>
+
+      <body class="hub-bg min-h-screen font-sans text-slate-900">
+        <div class="max-w-4xl mx-auto p-6 relative z-10">
+          <header class="flex items-center justify-between mb-6">
+            <div>
+              <h1 class="text-2xl font-semibold text-white drop-shadow-md">Search destination</h1>
+              <p class="text-sm text-slate-100/80">Type any city, country, or landmark (e.g., Tokyo, Japan)</p>
+            </div>
+            <div>
+              <a href="hub.html" class="text-sm text-white/90 underline">Open Hub (direct)</a>
+            </div>
+          </header>
+
+          <section class="card p-4">
+            <label class="block text-sm text-slate-200 mb-2">Search</label>
+
+            <div class="relative">
+              <input id="search-input" type="search" placeholder="Search city, country or landmark" class="w-full border rounded-xl p-3 pr-36 focus:outline-none focus:ring-2 focus:ring-weatherBlue bg-white/6 text-white placeholder-white/60" aria-label="Search location" />
+              <button id="detect-btn" class="absolute right-24 top-3 px-3 py-2 rounded-lg bg-white/8 border text-sm text-white">Detect</button>
+              <button id="go-hub" class="absolute right-3 top-3 px-4 py-2 rounded-lg bg-gradient-to-r from-accent to-accent2 text-slate-900 font-medium">Plan</button>
+            </div>
+
+            <ul id="suggestions" class="mt-2 max-h-56 overflow-auto rounded-md border divide-y hidden bg-white/6"></ul>
+
+            <div id="search-hint" class="mt-4 text-sm text-slate-200/80">
+              Tip: use full names like "Tokyo, Japan" or landmarks like "Eiffel Tower".
+            </div>
+          </section>
+
+          <section class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="card p-4">
+              <h3 class="font-semibold text-white">Recent searches</h3>
+              <ul id="recent-list" class="text-sm text-white/80 space-y-2 mt-3"></ul>
+            </div>
+
+            <div class="card p-4">
+              <h3 class="font-semibold text-white">Fallback suggestions</h3>
+              <div id="fallbacks" class="text-sm text-white/80 mt-3">Will suggest nearby capitals or cities if search fails.</div>
+            </div>
+          </section>
+
+          <footer class="mt-8 text-sm text-white/60">
+            Setup: add API keys in src/config.js. OpenWeatherMap is recommended for realtime weather. Visual Crossing improves seasonal data charts.
+          </footer>
+        </div>
+
+        <div class="background-embellishments" aria-hidden="true"></div>
+
+        <script type="module" src="src/main-search.js"></script>
+      </body>
+    </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Wanderly — Place</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
+
+      <body class="bg-slate-50 min-h-screen">
+        <header class="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded-md bg-primary text-white text-lg shadow">
+              ✈️
+            </div>
+            <div>
+              <h1 class="font-extrabold text-lg">Wanderly</h1>
+            </div>
+          </a>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-6 py-6">
+          <div id="placeCard" class="bg-white rounded-2xl shadow overflow-hidden">
+            <!-- content injected by JS -->
+          </div>
+          <div class="mt-4">
+            <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border">Back home</a>
+          </div>
+        </main>
+
+        <script type="module" src="src/pages/place.js"></script>
+      </body>
+    </html>

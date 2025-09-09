@@ -1,0 +1,125 @@
+[
+      {
+        "id": "h1",
+        "name": "Riverside Grand Hotel",
+        "city": "Paris",
+        "price": 189,
+        "rating": 4.6,
+        "reviews": 1720,
+        "amenities": ["wifi","pool","pet_friendly","breakfast","free_cancellation"],
+        "image": "https://images.unsplash.com/photo-1551892589-865f69869434?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=8c1f7f8a8d90b03ad47a8fe0f9b9cfbf",
+        "gallery": [
+          "https://images.unsplash.com/photo-1551892589-865f69869434?q=80&w=2000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=2000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1501117716987-c8e0ec5bc74a?q=80&w=2000&auto=format&fit=crop"
+        ],
+        "distance_km": 2.1,
+        "rooms_available": 8
+      },
+      {
+        "id": "h2",
+        "name": "Loft & Leisure",
+        "city": "Paris",
+        "price": 124,
+        "rating": 4.2,
+        "reviews": 482,
+        "amenities": ["wifi","pet_friendly","parking"],
+        "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=9b4b45d045f2ab24a21a12a20b6c2032",
+        "gallery": [
+          "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2000&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1560449630-1a19eabc7a3f?q=80&w=2000&auto=format&fit=crop"
+        ],
+        "distance_km": 4.5,
+        "rooms_available": 5
+      },
+      {
+        "id": "h3",
+        "name": "City Center Suites",
+        "city": "Paris",
+        "price": 230,
+        "rating": 4.8,
+        "reviews": 2200,
+        "amenities": ["wifi","spa","breakfast","free_cancellation"],
+        "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f4b7b08b2eeb36f3e2820061f2e2b09",
+        "gallery": [
+          "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=2000&auto=format&fit=crop"
+        ],
+        "distance_km": 0.5,
+        "rooms_available": 3
+      },
+      {
+        "id": "h4",
+        "name": "Boutique Hideaway",
+        "city": "London",
+        "price": 150,
+        "rating": 4.4,
+        "reviews": 910,
+        "amenities": ["wifi","pet_friendly","breakfast"],
+        "image": "https://images.unsplash.com/photo-1501117716987-c8e0ec5bc74a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b7f9474aafc4f7b8a7f63b7f60e3c15",
+        "gallery": [
+          "https://images.unsplash.com/photo-1501117716987-c8e0ec5bc74a?q=80&w=2000&auto=format&fit=crop"
+        ],
+        "distance_km": 3.2,
+        "rooms_available": 6
+      },
+      {
+        "id": "h5",
+        "name": "Seaside Resort & Spa",
+        "city": "Barcelona",
+        "price": 210,
+        "rating": 4.7,
+        "reviews": 1302,
+        "amenities": ["wifi","pool","spa","free_cancellation"],
+        "image": "https://images.unsplash.com/photo-1501117716987-c8e0ec5bc74a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b7f9474aafc4f7b8a7f63b7f60e3c15",
+        "gallery": [
+          "https://images.unsplash.com/photo-1501117716987-c8e0ec5bc74a?q=80&w=2000&auto=format&fit=crop"
+        ],
+        "distance_km": 0.9,
+        "rooms_available": 10
+      },
+      {
+        "id": "h6",
+        "name": "Budget Stay",
+        "city": "Paris",
+        "price": 79,
+        "rating": 3.8,
+        "reviews": 210,
+        "amenities": ["wifi","parking"],
+        "image": "https://images.unsplash.com/photo-1523301343968-4e7b9a3b0b4a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f3123fbe2c1f7ca92ecc4f9fda3f1d9",
+        "gallery": [
+          "https://images.unsplash.com/photo-1523301343968-4e7b9a3b0b4a?q=80&w=2000&auto=format&fit=crop"
+        ],
+        "distance_km": 7.8,
+        "rooms_available": 12
+      },
+      {
+        "id": "h7",
+        "name": "Historic Corner Inn",
+        "city": "Rome",
+        "price": 132,
+        "rating": 4.3,
+        "reviews": 645,
+        "amenities": ["wifi","breakfast","pet_friendly"],
+        "image": "https://images.unsplash.com/photo-1505691723518-34d8d7b9b9b0?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=8d2c4b2e4b3a5a7d7d8c1f2e3a2b4c5d",
+        "gallery": [
+          "https://images.unsplash.com/photo-1505691723518-34d8d7b9b9b0?q=80&w=2000&auto=format&fit=crop"
+        ],
+        "distance_km": 1.6,
+        "rooms_available": 4
+      },
+      {
+        "id": "h8",
+        "name": "Mountain View Lodge",
+        "city": "Geneva",
+        "price": 198,
+        "rating": 4.5,
+        "reviews": 502,
+        "amenities": ["wifi","pet_friendly","free_cancellation"],
+        "image": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=0663b761951e1ee9b8e0b1d7d1c9cab8",
+        "gallery": [
+          "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=2000&auto=format&fit=crop"
+        ],
+        "distance_km": 12,
+        "rooms_available": 7
+      }
+    ]

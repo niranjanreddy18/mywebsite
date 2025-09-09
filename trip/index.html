@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Travel Planner — Destination & Return Date</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="bg-slate-50 text-slate-900">
+    <main class="min-h-screen flex items-center justify-center p-6">
+      <form
+        id="plannerForm"
+        class="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-6 md:p-10 space-y-6"
+        novalidate
+      >
+        <header class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <svg
+              class="w-10 h-10 text-teal-600"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M2 21L23 12L2 3L9 12L2 21Z" fill="currentColor" />
+            </svg>
+            <div>
+              <h1 class="text-2xl font-semibold">Travel Planner</h1>
+              <p class="text-sm text-slate-500">
+                Plan trips quickly — enter your destination and return date.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <!-- Error Messages -->
+        <div id="errorMessages" class="text-red-600 text-sm space-y-1"></div>
+
+        <!-- Destination + Return Date + Enter Button -->
+        <div class="flex gap-2 flex-wrap">
+          <!-- Destination -->
+          <input
+            id="to"
+            name="to"
+            type="text"
+            placeholder="City, airport or address"
+            class="flex-1 min-w-[200px] rounded-lg border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-300"
+            autocomplete="off"
+          />
+
+          <!-- Return Date -->
+          <input
+            id="returnDate"
+            name="returnDate"
+            type="text"
+            placeholder="Return Date (dd/mm/yyyy)"
+            class="flex-1 min-w-[160px] rounded-lg border border-slate-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-300"
+          />
+
+          <!-- Enter Button -->
+          <button
+            type="submit"
+            class="bg-teal-600 text-white px-6 py-2 rounded-lg shadow hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400"
+          >
+            Enter
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <!-- Google Places Autocomplete Script -->
+    <script>
+      let selectedPlace = null; // store selected place from autocomplete
+
+      function initAutocomplete() {
+        const toInput = document.getElementById("to");
+
+        const options = {
+          fields: ["place_id", "name", "formatted_address", "geometry"],
+          types: ["(cities)"], // restrict to cities
+        };
+
+        const toAutocomplete = new google.maps.places.Autocomplete(
+          toInput,
+          options
+        );
+
+        toAutocomplete.addListener("place_changed", () => {
+          selectedPlace = toAutocomplete.getPlace();
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("plannerForm");
+        const errorDiv = document.getElementById("errorMessages");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          errorDiv.innerHTML = ""; // clear previous errors
+
+          const returnDateValue = document
+            .getElementById("returnDate")
+            .value.trim();
+          const errors = [];
+
+          // Check both fields filled
+          if (!selectedPlace) {
+            errors.push("Please select a destination from suggestions.");
+          }
+          if (!returnDateValue) {
+            errors.push("Please enter a return date.");
+          }
+
+          // Validate return date
+          if (returnDateValue) {
+            const dateParts = returnDateValue.split("/");
+            if (dateParts.length !== 3) {
+              errors.push("Return date must be in dd/mm/yyyy format.");
+            } else {
+              const day = parseInt(dateParts[0], 10);
+              const month = parseInt(dateParts[1], 10);
+              const year = parseInt(dateParts[2], 10);
+              const today = new Date();
+              const currentYear = today.getFullYear();
+
+              // Check valid ranges
+              if (day < 1 || day > 31)
+                errors.push("Day must be between 1 and 31.");
+              if (month < 1 || month > 12)
+                errors.push("Month must be between 1 and 12.");
+              if (year < currentYear)
+                errors.push("Year cannot be less than current year.");
+
+              // Check month-day combinations
+              const daysInMonth = [
+                31,
+                year % 4 === 0 ? 29 : 28,
+                31,
+                30,
+                31,
+                30,
+                31,
+                31,
+                30,
+                31,
+                30,
+                31,
+              ];
+              if (month >= 1 && month <= 12 && day > daysInMonth[month - 1]) {
+                errors.push(`Invalid date for month ${month}.`);
+              }
+            }
+          }
+
+          if (errors.length > 0) {
+            errorDiv.innerHTML = errors
+              .map((err) => `<div>${err}</div>`)
+              .join("");
+            return;
+          }
+
+          // Redirect if no errors
+          const destination =
+            selectedPlace.formatted_address || selectedPlace.name;
+          window.location.href = `options/index.html?destination=${encodeURIComponent(
+            destination
+          )}&returnDate=${encodeURIComponent(returnDateValue)}`;
+        });
+      });
+    </script>
+
+    <!-- Google Maps API -->
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYzCuoNPOO9kL3pvp_TFCfTsX6smwQnKQ&libraries=places&callback=initAutocomplete"
+    ></script>
+  </body>
+</html>

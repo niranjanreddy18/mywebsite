@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Maps & Navigation</title>
+        <link rel="stylesheet" href="styles.css" />
+      </head>
+      <body>
+        <main>
+          <section class="maps-section" aria-labelledby="maps-heading">
+            <div class="content">
+              <header class="intro">
+                <h2 id="maps-heading">Maps & Navigation</h2>
+                <p>
+                  Discover and navigate with confidence. Pinpoint places, download
+                  areas for offline use, and calculate travel time between
+                  destinations — all in one clean, responsive interface.
+                </p>
+              </header>
+
+              <div class="features-and-map">
+                <div class="features" role="list">
+                  <article class="feature-card" data-feature="map" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">
+                      <!-- simple icon -->
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 6l-6-2-5 2-7-2v14l7 2 5-2 6 2V6z"></path>
+                        <circle cx="12" cy="12" r="2.5"></circle>
+                      </svg>
+                    </div>
+                    <div class="feature-body">
+                      <h3>Interactive Maps</h3>
+                      <p>Pinpoint attractions, hotels, restaurants, and transport hubs. Click pins to reveal details and quickly center the map.</p>
+                      <div class="card-actions">
+                        <button class="btn btn-primary" data-action="focus-map">Explore Map</button>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="feature-card" data-feature="offline" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                      </svg>
+                    </div>
+                    <div class="feature-body">
+                      <h3>Offline Maps</h3>
+                      <p>Download specific areas to access maps and pinned locations even without connectivity. Manage downloads and storage in one place.</p>
+                      <div class="card-actions">
+                        <button class="btn" data-action="download-area">Download Area</button>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="feature-card" data-feature="distance" role="listitem">
+                    <div class="feature-icon" aria-hidden="true">
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12h6"></path>
+                        <path d="M15 12h6"></path>
+                        <path d="M12 5v14"></path>
+                        <path d="M8 8l-1.5-1.5"></path>
+                        <path d="M16 16l1.5 1.5"></path>
+                      </svg>
+                    </div>
+                    <div class="feature-body">
+                      <h3>Distance Calculator</h3>
+                      <p>Estimate distance and travel time between two points by foot, bike, or car. Quick, offline-friendly calculations based on coordinates.</p>
+                      <div class="card-actions">
+                        <button class="btn" data-action="open-calculator">Calculate Distance</button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <aside class="map-pane" aria-label="Interactive map and controls">
+                  <div class="map-header">
+                    <div class="map-title">Map Preview</div>
+                    <div class="map-controls">
+                      <label class="control">
+                        <input type="checkbox" id="toggle-pins" checked />
+                        Show pins
+                      </label>
+                      <button class="btn small" id="center-all">Center All</button>
+                    </div>
+                  </div>
+
+                  <div id="map" class="map" tabindex="0" aria-live="polite"></div>
+
+                  <div id="map-legend" class="map-legend" aria-hidden="false">
+                    <strong>Legend</strong>
+                    <ul>
+                      <li><span class="legend-pin poi"></span> Point of Interest</li>
+                      <li><span class="legend-pin hotel"></span> Hotel</li>
+                      <li><span class="legend-pin station"></span> Transport</li>
+                    </ul>
+                  </div>
+
+                  <div id="download-status" class="download-status" hidden>
+                    <div class="download-bar">
+                      <div class="download-progress" style="width:0%"></div>
+                    </div>
+                    <div class="download-meta">
+                      <span id="download-label">Preparing...</span>
+                      <button class="btn small" id="cancel-download">Cancel</button>
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <!-- Distance Calculator Modal -->
+        <div id="calc-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="calc-title">
+          <div class="modal-panel">
+            <header class="modal-header">
+              <h3 id="calc-title">Distance Calculator</h3>
+              <button class="btn ghost" id="close-calc" aria-label="Close calculator">Close</button>
+            </header>
+
+            <div class="modal-body">
+              <form id="distance-form">
+                <label>
+                  From
+                  <select id="from-select" required></select>
+                </label>
+
+                <label>
+                  To
+                  <select id="to-select" required></select>
+                </label>
+
+                <label>
+                  Mode
+                  <select id="mode-select">
+                    <option value="walk">Walk</option>
+                    <option value="bike">Bike</option>
+                    <option value="drive" selected>Drive</option>
+                  </select>
+                </label>
+
+                <div class="form-actions">
+                  <button class="btn btn-primary" type="submit">Calculate</button>
+                </div>
+              </form>
+
+              <div id="calc-result" class="calc-result" hidden>
+                <p><strong>Distance:</strong> <span id="distance-km"></span> km</p>
+                <p><strong>Estimated time:</strong> <span id="eta"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script type="module" src="src/index.js"></script>
+      </body>
+    </html>

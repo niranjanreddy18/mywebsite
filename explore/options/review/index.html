@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Wanderly — Travel Community & Trip Planner</title>
+        <link rel="stylesheet" href="src/styles.css" />
+      </head>
+      <body>
+        <div id="app">
+          <header class="site-header">
+            <div class="brand">
+              <svg class="logo" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2L15 8l6 .5-4.5 3.5L18 20l-6-4-6 4 1.5-8L3 8.5 9 8z" fill="currentColor"/>
+              </svg>
+              <h1>Wanderly</h1>
+            </div>
+
+            <div class="header-actions">
+              <input id="search" placeholder="Search destinations, tags..." />
+              <button id="btn-wishlist" class="btn subtle">Wishlist <span id="wishlist-count">0</span></button>
+            </div>
+          </header>
+
+          <main>
+            <section class="hero">
+              <div class="hero-left">
+                <h2>Explore authentic travel reviews, immersive media, and discover community tips</h2>
+                <p>Discover curated guides and community insights. Save favorites and preview destinations in 360°.</p>
+
+                <div class="hero-ctas">
+                  <button id="cta-write" class="btn outline">Write a Review</button>
+                </div>
+              </div>
+              <div class="hero-gallery" id="hero-carousel">
+                <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1505765052748-63b6c0d98b8f?w=1600&q=80&auto=format&fit=crop')"></div>
+                <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80&auto=format&fit=crop')"></div>
+                <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1491553895911-0055eca6402e?w=1600&q=80&auto=format&fit=crop')"></div>
+              </div>
+            </section>
+
+            <section class="destinations" id="destinations">
+              <div class="section-header">
+                <h3>Featured Destinations</h3>
+                <p>Community-picked spots with immersive media and traveler reviews</p>
+              </div>
+              <div class="cards" id="dest-cards"></div>
+            </section>
+
+            <section class="media">
+              <div class="section-header">
+                <h3>Media Gallery & Virtual Tours</h3>
+                <p>High-resolution galleries and 360° views</p>
+              </div>
+
+              <div class="media-grid" id="media-grid"></div>
+            </section>
+
+            <section class="community" id="community">
+              <div class="section-header">
+                <h3>Traveler Stories & Reviews</h3>
+                <p>Read personal stories, tips, and ratings from real travelers</p>
+              </div>
+
+              <div class="reviews-layout">
+                <div id="reviews-list" class="reviews-list"></div>
+
+                <aside class="review-form-card">
+                  <h4>Share your experience</h4>
+                  <form id="review-form">
+                    <label>
+                      Destination
+                      <select id="review-destination"></select>
+                    </label>
+                    <label>
+                      Your name
+                      <input id="review-name" required />
+                    </label>
+                    <label>
+                      Rating
+                      <select id="review-rating">
+                        <option value="5">5 — Excellent</option>
+                        <option value="4">4 — Very Good</option>
+                        <option value="3">3 — Good</option>
+                        <option value="2">2 — Fair</option>
+                        <option value="1">1 — Poor</option>
+                      </select>
+                    </label>
+                    <label>
+                      Story & Tips
+                      <textarea id="review-text" rows="5" placeholder="Tell others what made this place special..."></textarea>
+                    </label>
+                    <div class="form-actions">
+                      <button type="submit" class="btn primary">Publish Review</button>
+                      <button type="button" id="btn-reset-review" class="btn subtle">Reset</button>
+                    </div>
+                  </form>
+                </aside>
+              </div>
+            </section>
+          </main>
+
+          <footer class="site-footer">
+            <p>© <span id="year"></span> Wanderly — Built with community-first design</p>
+            <p class="muted">Images: Unsplash • Data stored locally for demo</p>
+          </footer>
+
+          <!-- Wishlist panel -->
+          <aside id="panel-wishlist" class="side-panel hidden">
+            <button class="panel-close" data-close>✕</button>
+            <h4>Your Wishlist</h4>
+            <div id="wishlist-items"></div>
+          </aside>
+        </div>
+
+        <script type="module" src="src/main.js"></script>
+      </body>
+    </html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wanderly — Travel Planner</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind custom colors & config
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#0ea5a4',
+                dark: '#0b7b79'
+              }
+              accent: '#7c3aed'
+            }
+          }
+        }
+      };
+    </script>
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>"
+    />
+
+    <style>
+      /* Minimal custom styles */
+      .card-image {
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+      .card:hover .card-image {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      }
+      /* ensure hidden inputs are still focusable for accessibility */
+      .sr-only:not(:focus):not(:active) {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-gradient-to-b from-white via-slate-50 to-slate-100 min-h-screen text-slate-800"
+  >
+    <header
+      class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between"
+    >
+      <a href="index.html" class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 flex items-center justify-center rounded-md bg-primary text-white text-lg shadow"
+        >
+          ✈️
+        </div>
+        <div>
+          <h1 class="font-extrabold text-lg">Wanderly</h1>
+          <p class="text-xs text-slate-500 -mt-1">Curated travel ideas</p>
+        </div>
+      </a>
+
+      <nav>
+        <a
+          href="index.html"
+          class="ml-6 inline-flex items-center gap-2 px-3 py-2 rounded-full text-sm bg-white shadow hover:bg-slate-50"
+        >
+          Home
+        </a>
+      </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pb-16">
+      <!-- Hero -->
+      <section class="grid lg:grid-cols-2 gap-8 items-center mb-12">
+        <div>
+          <h2 class="text-4xl font-extrabold leading-tight mb-3">
+            Find beautiful places and craft your perfect trip
+          </h2>
+          <p class="text-slate-600 mb-6">
+            Explore top nearby gems, seasonal highlights, or customize a trip
+            tailored to your style — solo, family, or adventure-packed.
+          </p>
+        </div>
+        <div class="hidden lg:flex justify-center">
+          <img
+            src="https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=1f3a86da9d39d2d6aa7f9e7f0f4eb8b6"
+            alt="Travel hero"
+            class="rounded-xl shadow-lg w-full h-64 object-cover"
+          />
+        </div>
+      </section>
+
+      <!-- Famous Places Nearby -->
+      <section class="mb-10">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-2xl font-semibold">Famous places nearby to visit</h3>
+          <a href="#nearby" class="text-sm text-primary hover:underline"
+            >View all</a
+          >
+        </div>
+
+        <div id="nearby" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Cards injected by JS -->
+        </div>
+      </section>
+
+      <!-- Seasonal Places -->
+      <section class="mb-10">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-2xl font-semibold">
+            Famous places in the current season
+          </h3>
+          <a href="#seasonal" class="text-sm text-primary hover:underline"
+            >Explore more</a
+          >
+        </div>
+
+        <div id="seasonal" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Cards injected by JS -->
+        </div>
+      </section>
+
+      <!-- Customize your trip -->
+      <section id="customize" class="bg-white rounded-2xl shadow p-6">
+        <h3 class="text-2xl font-semibold mb-4">Customize your trip</h3>
+
+        <form
+          id="plannerForm"
+          action="results.html"
+          method="get"
+          class="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          <div class="space-y-4">
+            <div>
+              <span class="text-sm text-slate-600">Travel Dates</span>
+              <div class="mt-2 grid grid-cols-2 gap-2">
+                <input
+                  type="date"
+                  name="startDate"
+                  required
+                  class="rounded-lg border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input
+                  type="date"
+                  name="endDate"
+                  required
+                  class="rounded-lg border border-slate-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+            </div>
+
+            <div>
+              <span class="text-sm text-slate-600">Budget</span>
+              <div class="mt-3 flex flex-wrap gap-3">
+                <div>
+                  <input
+                    class="sr-only peer"
+                    type="radio"
+                    name="budget"
+                    id="budget-low"
+                    value="Low"
+                    checked
+                  />
+                  <label
+                    for="budget-low"
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full border cursor-pointer select-none transition-colors peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary"
+                  >
+                    <span class="text-xl">💸</span>
+                    <span>Low</span>
+                  </label>
+                </div>
+
+                <div>
+                  <input
+                    class="sr-only peer"
+                    type="radio"
+                    name="budget"
+                    id="budget-medium"
+                    value="Medium"
+                  />
+                  <label
+                    for="budget-medium"
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full border cursor-pointer select-none transition-colors peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary"
+                  >
+                    <span class="text-xl">💳</span>
+                    <span>Medium</span>
+                  </label>
+                </div>
+
+                <div>
+                  <input
+                    class="sr-only peer"
+                    type="radio"
+                    name="budget"
+                    id="budget-luxury"
+                    value="Luxury"
+                  />
+                  <label
+                    for="budget-luxury"
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full border cursor-pointer select-none transition-colors peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary"
+                  >
+                    <span class="text-xl">🏨</span>
+                    <span>Luxury</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Trip Type (custom radios with emojis) -->
+            <div>
+              <span class="text-sm text-slate-600">Trip Type</span>
+              <div
+                class="mt-3 flex flex-wrap gap-3"
+                role="radiogroup"
+                aria-label="Trip Type"
+              >
+                <div>
+                  <input
+                    class="sr-only peer"
+                    type="radio"
+                    name="tripType"
+                    id="type-solo"
+                    value="Solo"
+                    checked
+                  />
+                  <label
+                    for="type-solo"
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full border cursor-pointer select-none transition-colors peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent"
+                  >
+                    <span class="text-xl">🧍</span>
+                    <span>Solo</span>
+                  </label>
+                </div>
+
+                <div>
+                  <input
+                    class="sr-only peer"
+                    type="radio"
+                    name="tripType"
+                    id="type-family"
+                    value="Family"
+                  />
+                  <label
+                    for="type-family"
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full border cursor-pointer select-none transition-colors peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent"
+                  >
+                    <span class="text-xl">👨‍👩‍👧</span>
+                    <span>Family</span>
+                  </label>
+                </div>
+
+                <div>
+                  <input
+                    class="sr-only peer"
+                    type="radio"
+                    name="tripType"
+                    id="type-friends"
+                    value="Friends"
+                  />
+                  <label
+                    for="type-friends"
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full border cursor-pointer select-none transition-colors peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent"
+                  >
+                    <span class="text-xl">👬</span>
+                    <span>Friends</span>
+                  </label>
+                </div>
+
+                <div>
+                  <input
+                    class="sr-only peer"
+                    type="radio"
+                    name="tripType"
+                    id="type-honeymoon"
+                    value="Honeymoon"
+                  />
+                  <label
+                    for="type-honeymoon"
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full border cursor-pointer select-none transition-colors peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent"
+                  >
+                    <span class="text-xl">💑</span>
+                    <span>Honeymoon</span>
+                  </label>
+                </div>
+
+                <div>
+                  <input
+                    class="sr-only peer"
+                    type="radio"
+                    name="tripType"
+                    id="type-adventure"
+                    value="Adventure"
+                  />
+                  <label
+                    for="type-adventure"
+                    class="inline-flex items-center gap-3 px-4 py-2 rounded-full border cursor-pointer select-none transition-colors peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent"
+                  >
+                    <span class="text-xl">🎒</span>
+                    <span>Adventure</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interests (multi-select toggles) -->
+            <div>
+              <span class="text-sm text-slate-600">Interests</span>
+              <div class="mt-3 flex flex-wrap gap-3">
+                <label
+                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="interest"
+                    value="Nature"
+                    class="sr-only peer"
+                  />
+                  <span class="text-xl">🌳</span>
+                  <span>Nature</span>
+                </label>
+
+                <label
+                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="interest"
+                    value="Historical"
+                    class="sr-only peer"
+                  />
+                  <span class="text-xl">🏛️</span>
+                  <span>Historical</span>
+                </label>
+
+                <label
+                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="interest"
+                    value="Food"
+                    class="sr-only peer"
+                  />
+                  <span class="text-xl">🍜</span>
+                  <span>Food</span>
+                </label>
+
+                <label
+                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="interest"
+                    value="Shopping"
+                    class="sr-only peer"
+                  />
+                  <span class="text-xl">🛍️</span>
+                  <span>Shopping</span>
+                </label>
+
+                <label
+                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="interest"
+                    value="Beaches"
+                    class="sr-only peer"
+                  />
+                  <span class="text-xl">🏖️</span>
+                  <span>Beaches</span>
+                </label>
+
+                <label
+                  class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    name="interest"
+                    value="Trekking"
+                    class="sr-only peer"
+                  />
+                  <span class="text-xl">🥾</span>
+                  <span>Trekking</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="md:col-span-2">
+              <button
+                type="button"
+                class="w-full inline-flex justify-center items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-black font-semibold shadow hover:opacity-95"
+                onclick="window.location.href='options/index.html';"
+              >
+                Explore Trips
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="text-center text-sm text-slate-500 py-8">
+      © <span id="year"></span> Wanderly. Photos via Unsplash.
+    </footer>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

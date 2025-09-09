@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>ExploreLocal — Travel Home</title>
+
+        <!-- Inter font -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="styles.css" />
+      </head>
+      <body>
+        <div class="page">
+          <header class="header">
+            <div class="brand">
+              <svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 2L2 7v7c0 5 5 9 10 8 5-1 10-5 10-10V7L12 2z" fill="currentColor"/>
+              </svg>
+              <div class="brand-text">
+                <div class="brand-title">ExploreLocal</div>
+                <div class="brand-sub">Travel resources & guides</div>
+              </div>
+            </div>
+          </header>
+
+          <main class="container" id="grid" role="main" aria-label="Main navigation">
+            <!-- Card links -->
+            <a class="card" href="destination/index.html" data-index="0" aria-labelledby="h-destination">
+              <div class="card-inner">
+                <div class="card-emoji">🌍</div>
+                <h3 id="h-destination" class="card-title">Destination Info</h3>
+                <p class="card-sub">Overview, highlights & tips</p>
+              </div>
+            </a>
+
+            <a class="card" href="navigation/index.html" data-index="1" aria-labelledby="h-maps">
+              <div class="card-inner">
+                <div class="card-emoji">🗺️</div>
+                <h3 id="h-maps" class="card-title">Maps & Navigation</h3>
+                <p class="card-sub">Topographic & satellite views</p>
+              </div>
+            </a>
+
+            <a class="card" href="transport/index.html" data-index="2" aria-labelledby="h-stay">
+              <div class="card-inner">
+                <div class="card-emoji">🏨</div>
+                <h3 id="h-stay" class="card-title">Stay & Transport</h3>
+                <p class="card-sub">Accommodation & travel options</p>
+              </div>
+            </a>
+
+            <a class="card" href="cultural/index.html" data-index="3" aria-labelledby="h-culture">
+              <div class="card-inner">
+                <div class="card-emoji">🍲</div>
+                <h3 id="h-culture" class="card-title">Culture & Local</h3>
+                <p class="card-sub">Food, customs & must-sees</p>
+              </div>
+            </a>
+
+            <a class="card" href="review/index.html" data-index="4" aria-labelledby="h-community">
+              <div class="card-inner">
+                <div class="card-emoji">👥</div>
+                <h3 id="h-community" class="card-title">Community</h3>
+                <p class="card-sub">Local meetups & events</p>
+              </div>
+            </a>
+
+            <a class="card" href="saftey/index.html" data-index="5" aria-labelledby="h-safety">
+              <div class="card-inner">
+                <div class="card-emoji">⚠️</div>
+                <h3 id="h-safety" class="card-title">Safety & Health</h3>
+                <p class="card-sub">Advisories & health tips</p>
+              </div>
+            </a>
+          </main>
+
+          <footer class="footer">
+            <div class="footer-left">© <span id="year"></span> ExploreLocal</div>
+            <div class="footer-right">Minimal • Modern • Responsive</div>
+          </footer>
+        </div>
+
+        <script type="module" src="src/main.js"></script>
+      </body>
+    </html>

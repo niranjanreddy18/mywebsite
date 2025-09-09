@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Destination Hub</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+          tailwind.config = {
+            theme: { extend: { colors: { weatherBlue: '#36A2EB', warmAccent: '#FF6347', accent: '#5eead4', accent2: '#60a5fa' }, boxShadow: { 'soft-lg': '0 12px 40px rgba(2,6,23,0.6)' } } }}
+        </script>
+
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin />
+        <link rel="stylesheet" href="src/styles.css" />
+      </head>
+
+      <body class="hub-bg min-h-screen font-sans text-white">
+        <div class="max-w-6xl mx-auto p-6 lg:p-10 relative z-10">
+          <header class="flex items-start justify-between mb-6">
+            <div>
+              <h1 id="hub-title" class="text-2xl font-semibold">Destination Hub</h1>
+              <p id="hub-sub" class="text-sm text-white/80">Realtime weather, best time to visit and local highlights</p>
+            </div>
+            <div class="flex gap-2">
+              <a id="back" href="index.html" class="px-3 py-2 rounded-lg bg-white/8 text-white">Back</a>
+              <a id="open-owm" target="_blank" href="https://openweathermap.org" class="px-3 py-2 rounded-lg bg-gradient-to-r from-weatherBlue to-accent2 text-white">OpenWeatherMap</a>
+            </div>
+          </header>
+
+          <main class="grid lg:grid-cols-3 gap-6">
+            <!-- Left: Weather Now -->
+            <section class="lg:col-span-2 space-y-4">
+              <div id="weather-card" class="panel p-4">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div id="weather-location" class="text-lg font-semibold">—</div>
+                    <div id="weather-now-desc" class="text-sm text-white/80">—</div>
+                  </div>
+                  <div class="text-right">
+                    <div id="weather-temp" class="text-4xl font-bold text-weatherBlue">—°C</div>
+                    <div id="weather-highlow" class="text-sm text-white/80">High / Low —</div>
+                    <div id="weather-feels" class="text-xs text-white/70 mt-1">Feels like —</div>
+                  </div>
+                </div>
+
+                <div class="mt-4 grid grid-cols-3 gap-3 text-sm text-white/80">
+                  <div>
+                    <div id="weather-humidity" class="text-white font-semibold">—%</div>
+                    <div>Humidity</div>
+                  </div>
+                  <div>
+                    <div id="weather-precip" class="text-white font-semibold">— mm</div>
+                    <div>Precip (24h)</div>
+                  </div>
+                  <div>
+                    <div id="weather-chance" class="text-white font-semibold">—%</div>
+                    <div>Rain chance</div>
+                  </div>
+                </div>
+
+                <div id="weather-tip" class="mt-4 text-sm text-white/80"></div>
+
+                <div id="daily-forecast" class="mt-4 grid grid-cols-5 gap-2 text-center text-sm"></div>
+              </div>
+
+              <div id="when-card" class="panel p-4">
+                <h3 class="font-semibold">Best time to visit</h3>
+                <p id="best-time-summary" class="text-sm text-white/80 mt-2">Loading seasonal insights…</p>
+                <canvas id="climate-chart" class="mt-4" height="140"></canvas>
+                <div id="season-recommend" class="mt-3 text-sm text-white/80"></div>
+              </div>
+
+              <div id="highlights-card" class="panel p-4">
+                <h3 class="font-semibold">Local highlights</h3>
+                <div id="attractions" class="mt-3 grid gap-3"></div>
+                <div id="festivals" class="mt-4">
+                  <h4 class="font-medium text-sm">Events</h4>
+                  <div id="events-list" class="mt-2 text-sm text-white/80"></div>
+                </div>
+                <div id="food" class="mt-4">
+                  <h4 class="font-medium text-sm">Food specialties</h4>
+                  <div id="food-list" class="mt-2 text-sm text-white/80"></div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Right: Map and quick facts -->
+            <aside class="space-y-4">
+              <div id="map" class="h-72 rounded-2xl overflow-hidden border border-white/10"></div>
+
+              <div class="panel p-4">
+                <h4 class="font-semibold">Quick facts</h4>
+                <div id="quick-facts" class="mt-2 text-sm text-white/80"></div>
+              </div>
+
+              <div class="panel p-4">
+                <h4 class="font-semibold">Actions</h4>
+                <div class="mt-2 flex flex-col gap-2">
+                  <button id="cta-plan" class="px-3 py-2 rounded-lg bg-gradient-to-r from-accent to-accent2 text-slate-900">Plan Your Trip</button>
+                  <button id="cta-book" class="px-3 py-2 rounded-lg bg-warmAccent text-white">Find hotels</button>
+                </div>
+              </div>
+            </aside>
+          </main>
+
+          <footer class="mt-6 text-sm text-white/70">Data sources: OpenWeatherMap / Open-Meteo, Visual Crossing or Open-Meteo climate, Wikipedia for highlights. Configure API keys in src/config.js.</footer>
+        </div>
+
+        <div class="background-embellishments" aria-hidden="true"></div>
+
+        <!-- Libraries -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <!-- App -->
+        <script type="module" src="src/hub-app.js"></script>
+      </body>
+    </html>

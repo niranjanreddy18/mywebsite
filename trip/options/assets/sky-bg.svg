@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1400" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#e8f9ff"/>
+          <stop offset="60%" stop-color="#d6f3fb"/>
+          <stop offset="100%" stop-color="#c8eef6"/>
+        </linearGradient>
+        <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="16" />
+        </filter>
+      </defs>
+
+      <rect width="100%" height="100%" fill="url(#g)"/>
+
+      <!-- Fluffy white clouds (minimal & soft) -->
+      <g filter="url(#blur)" fill="#ffffff" opacity="0.95">
+        <g transform="translate(160,220) scale(1)">
+          <ellipse cx="0" cy="60" rx="110" ry="42"/>
+          <ellipse cx="85" cy="40" rx="98" ry="46"/>
+          <ellipse cx="-70" cy="50" rx="88" ry="40"/>
+          <ellipse cx="10" cy="20" rx="150" ry="56"/>
+        </g>
+
+        <g transform="translate(1000,160) scale(1.1)">
+          <ellipse cx="0" cy="70" rx="150" ry="56"/>
+          <ellipse cx="130" cy="50" rx="120" ry="50"/>
+          <ellipse cx="-100" cy="60" rx="110" ry="48"/>
+          <ellipse cx="30" cy="20" rx="200" ry="76"/>
+        </g>
+
+        <g transform="translate(1640,300) scale(0.95)">
+          <ellipse cx="0" cy="60" rx="100" ry="44"/>
+          <ellipse cx="75" cy="48" rx="88" ry="40"/>
+          <ellipse cx="-60" cy="52" rx="78" ry="36"/>
+          <ellipse cx="10" cy="30" rx="130" ry="50"/>
+        </g>
+      </g>
+
+      <!-- subtle decorative horizon strokes -->
+      <g opacity="0.03" stroke="#ffffff" stroke-width="2" stroke-linecap="round">
+        <path d="M0 360 C420 260, 700 260, 1000 340" />
+        <path d="M620 420 C930 360, 1350 360, 2000 420" />
+      </g>
+    </svg>

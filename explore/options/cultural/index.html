@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Cultural & Local Experience — Enhanced Background</title>
+        <meta name="theme-color" content="#ff6b6b" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css" />
+      </head>
+      <body>
+        <!-- Page background collage (food + cultural images) -->
+        <div class="page-bg" aria-hidden="true">
+          <img class="bg-img bg-1" src="https://images.unsplash.com/photo-1604908177522-4dcd6a2c8e11?q=80&w=1400&auto=format&fit=crop&ixlib=rb-1.2.1&s=3c2d6ff8e3d6a8a2f2e8f6a6f2a3f1bc" alt="">
+          <img class="bg-img bg-2" src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1400&auto=format&fit=crop&ixlib=rb-1.2.1&s=4d0c9d0f5a7fe3e5964be3a2f9a9a8f2" alt="">
+          <img class="bg-img bg-3" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop&ixlib=rb-1.2.1&s=9a8b9d7b6a5c4e3f2d1a0b9c8e7f6a5d" alt="">
+          <img class="bg-img bg-4" src="https://images.unsplash.com/photo-1526481280698-4c28a3a5d56f?q=80&w=1400&auto=format&fit=crop&ixlib=rb-1.2.1&s=9b6c1f9a7e3a2f1b4c6e5d7a8b9c0d1e" alt="">
+          <img class="bg-img bg-5" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-1.2.1&s=e1b2d3c4f5a6b7c8d9e0f1a2b3c4d5e6" alt="">
+        </div>
+
+        <main>
+          <section class="culture-section" aria-labelledby="culture-heading">
+            <div class="decor-collage" aria-hidden="true">
+              <img class="tile tile-1" src="https://images.unsplash.com/photo-1547270786-5e9b273c0d2a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=6b1b9b4d8f4b4b9ef1e0a0e7a4c9b2a1" alt="">
+              <img class="tile tile-2" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=8a9e1d5b6f3c6d7e8b4f2a6c1b0d3e2f" alt="">
+              <img class="tile tile-3" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=2c3d4e5a6b7c8d9e0f1a2b3c4d5e6f7a" alt="">
+            </div>
+
+            <div class="container">
+              <header class="section-intro">
+                <div class="intro-left">
+                  <h2 id="culture-heading">Cultural & Local Experiences</h2>
+                  <p class="subtext">
+                    Immerse yourself in local life with curated cuisine picks and practical etiquette. Use search, filters, and save favorites for quick access.
+                  </p>
+                </div>
+
+                <div class="intro-right">
+                  <div class="controls">
+                    <div class="search-wrap">
+                      <input id="search" class="search" type="search" placeholder="Search dishes, tips, places..." aria-label="Search cultural experiences" />
+                      <button id="clear-search" class="btn icon-btn" title="Clear search" aria-label="Clear search">✕</button>
+                    </div>
+
+                    <div class="toolbar">
+                      <button id="theme-toggle" class="btn small" aria-pressed="false" title="Toggle theme">🌙</button>
+                      <button id="favorites-open" class="btn small" title="View favorites">★ Favorites</button>
+                    </div>
+                  </div>
+                </div>
+              </header>
+
+              <nav class="filters" aria-label="Filters">
+                <div class="chips" id="tag-chips" role="list"></div>
+                <div class="sort">
+                  <label>
+                    Sort
+                    <select id="sort-select" aria-label="Sort items">
+                      <option value="relevance">Relevance</option>
+                      <option value="popularity">Popularity</option>
+                      <option value="alpha">A-Z</option>
+                    </select>
+                  </label>
+                </div>
+              </nav>
+
+              <div id="cards-grid" class="cards-grid" role="list" aria-live="polite"></div>
+            </div>
+          </section>
+        </main>
+
+        <!-- Visual gallery: curated food & cultural images -->
+        <section class="visual-gallery" aria-labelledby="gallery-heading">
+          <div class="gallery-inner">
+            <h3 id="gallery-heading">Gallery — Food & Culture</h3>
+            <p class="gallery-lead">A small visual selection of local flavors and cultural moments.</p>
+
+            <div class="gallery-grid">
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1543353071-087092ec393f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=7a8d9b4c3e2f1a0b6c5d4e3f2a1b0c9d" alt="Street food platter">
+                <figcaption>Morning street flavors</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c" alt="Traditional festival">
+                <figcaption>Festival procession</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=9b7e2a4c5d6f7a8c1b2d3e4f5a6b7c8d" alt="Market stalls">
+                <figcaption>Local market</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1478144592103-25e218a04891?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7" alt="Plated regional cuisine">
+                <figcaption>Signature dish</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523906630133-f6934a1abf0c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=1f2e3d4c5b6a79807f6e5d4c3b2a1f9e" alt="Cultural dance">
+                <figcaption>Cultural dance</figcaption>
+              </figure>
+
+              <figure class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523475496153-3d6cc0a2f3f8?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6" alt="Bakery pastries">
+                <figcaption>Market bakery</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- Do's & Don'ts footer section -->
+        <section id="dos-donts" class="dos-section" aria-labelledby="dos-heading">
+          <div class="dos-bg" aria-hidden="true">
+            <img class="dos-img dos-1" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=e1b2d3c4f5a6b7c8d9e0f1a2b3c4d5e6" alt="">
+            <img class="dos-img dos-2" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-1.2.1&s=9b7e2a4c5d6f7a8c1b2d3e4f5a6b7c8d" alt="">
+          </div>
+
+          <div class="dos-container">
+            <h3 id="dos-heading">Do’s & Don’ts — Practical Local Guidance</h3>
+            <p class="dos-lead">A concise checklist to help you show respect and stay safe while experiencing local culture.</p>
+
+            <div class="dos-columns">
+              <div class="dos-column dos-do">
+                <h4>Do</h4>
+                <ul>
+                  <li>Greet locals with a smile and learn a few basic phrases.</li>
+                  <li>Observe dress codes at religious and cultural sites; carry a lightweight scarf if needed.</li>
+                  <li>Try popular local dishes at busy stalls — locals are the best guide.</li>
+                  <li>Ask permission before photographing people, especially in private or sacred contexts.</li>
+                  <li>Keep small change handy for markets and tipping where appropriate.</li>
+                </ul>
+              </div>
+
+              <div class="dos-column dos-dont">
+                <h4>Don't</h4>
+                <ul>
+                  <li>Don’t touch religious artifacts or enter restricted areas without permission.</li>
+                  <li>Don’t assume tipping norms are the same — check local practice first.</li>
+                  <li>Don’t display valuables openly in crowded places; use anti-theft measures.</li>
+                  <li>Don’t interrupt rituals or ceremonies for photos — be respectful and patient.</li>
+                  <li>Don’t ignore local safety advice — avoid poorly lit or isolated areas at night.</li>
+                </ul>
+
+                <a class="btn" href="#culture-heading" role="button" aria-label="Back to top">Back to top</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Modal for detailed content -->
+        <div id="detail-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+          <div class="modal-panel" role="document">
+            <header class="modal-header">
+              <h3 id="modal-title"></h3>
+              <div class="modal-controls">
+                <button id="modal-fav" class="btn small" title="Toggle favorite">☆ Save</button>
+                <button id="modal-close" class="btn ghost" aria-label="Close dialog">Close</button>
+              </div>
+            </header>
+            <div id="modal-content" class="modal-content"></div>
+          </div>
+        </div>
+
+        <!-- Favorites drawer -->
+        <aside id="favorites-drawer" class="drawer" aria-hidden="true" aria-label="Favorites">
+          <header class="drawer-header">
+            <h4>Favorites</h4>
+            <button id="drawer-close" class="btn ghost" aria-label="Close favorites">Close</button>
+          </header>
+          <div id="favorites-list" class="drawer-body"></div>
+          <footer class="drawer-footer">
+            <button id="clear-favs" class="btn">Clear All</button>
+          </footer>
+        </aside>
+
+        <script type="module" src="src/script.js"></script>
+      </body>
+    </html>

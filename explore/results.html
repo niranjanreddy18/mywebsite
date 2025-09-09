@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Wanderly — Results</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
+
+      <body class="bg-slate-50 min-h-screen">
+        <header class="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded-md bg-primary text-white text-lg shadow">
+              ✈️
+            </div>
+            <div>
+              <h1 class="font-extrabold text-lg">Wanderly</h1>
+            </div>
+          </a>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-6 py-6">
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h2 class="text-2xl font-semibold mb-3">Your Trip Summary</h2>
+            <div id="summary" class="text-slate-700 space-y-2">
+              <!-- summary injected by JS -->
+            </div>
+
+            <div class="mt-6">
+              <h3 class="font-semibold mb-2">Suggested places</h3>
+              <div id="suggestions" class="grid sm:grid-cols-2 gap-4">
+                <!-- suggestions injected by JS -->
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border">Back to planner</a>
+            </div>
+          </div>
+        </main>
+
+        <script type="module" src="src/pages/results.js"></script>
+      </body>
+    </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Stay & Travel — Compare Hotels and Transport</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="src/styles.css">
+      </head>
+      <body>
+        <div id="app" class="app">
+          <header class="header">
+            <div class="brand">
+              <svg class="logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 12c0-4.9706 4.0294-9 9-9s9 4.0294 9 9-4.0294 9-9 9S3 16.9706 3 12z" fill="currentColor" />
+                <path d="M7.5 12a4.5 4.5 0 019 0" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <h1>Stay & Travel</h1>
+                <p class="tagline">Compare hotels, trains and flights — smart filters included</p>
+              </div>
+            </div>
+
+            <div class="search-bar">
+              <input id="searchInput" type="search" placeholder="Search city, hotel or route (e.g., Paris, NYC)" aria-label="Search">
+              <div class="search-controls">
+                <input id="dateInput" type="date" aria-label="Date">
+                <button id="searchBtn" class="btn primary">Search</button>
+              </div>
+            </div>
+
+            <div class="header-actions">
+              <button id="communityBtn" class="btn">Community</button>
+              <button id="wishlistBtn" class="btn">Wishlist <span id="wishlistCount" class="badge" aria-hidden="true">0</span></button>
+            </div>
+          </header>
+
+          <main class="main">
+            <aside class="filters-panel" id="filtersPanel">
+              <!-- Filters injected by JS -->
+            </aside>
+
+            <section class="results">
+              <div class="results-header">
+                <h2>Results</h2>
+                <div class="result-controls">
+                  <div class="toggle-group">
+                    <button data-target="hotels" class="toggle active">Hotels</button>
+                    <button data-target="transports" class="toggle">Transport</button>
+                  </div>
+                  <div class="sort">
+                    <label for="sortSelect">Sort:</label>
+                    <select id="sortSelect" aria-label="Sort results">
+                      <option value="recommended">Recommended</option>
+                      <option value="price-asc">Price: Low to High</option>
+                      <option value="price-desc">Price: High to Low</option>
+                      <option value="rating-desc">Rating</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid">
+                <section class="grid-column" id="hotelsColumn" aria-live="polite">
+                  <h3>Hotels</h3>
+                  <div id="hotelsList" class="cards"></div>
+                </section>
+
+                <section class="grid-column" id="transportsColumn" aria-live="polite" hidden>
+                  <h3>Transport Options</h3>
+                  <div id="transportsList" class="cards"></div>
+                </section>
+              </div>
+            </section>
+          </main>
+
+          <div id="compareTray" class="compare-tray" aria-hidden="true">
+            <div class="compare-inner">
+              <div class="compare-header">
+                <strong>Compare</strong>
+                <button id="compareClear" class="btn small">Clear</button>
+                <button id="compareView" class="btn primary small">View Comparison</button>
+              </div>
+              <div id="compareItems" class="compare-items"></div>
+            </div>
+          </div>
+
+          <div id="wishlistTray" class="compare-tray" aria-hidden="true">
+            <div class="compare-inner">
+              <div class="compare-header">
+                <strong>Wishlist</strong>
+                <button id="wishlistClear" class="btn small">Clear</button>
+                <button id="wishlistView" class="btn primary small">View Wishlist</button>
+              </div>
+              <div id="wishlistItems" class="compare-items"></div>
+            </div>
+          </div>
+
+          <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <div class="modal-backdrop" id="modalBackdrop"></div>
+            <div class="modal-panel" role="document" id="modalPanel"></div>
+          </div>
+
+          <footer class="footer">
+            <p>Built with care • Smart filters: pet friendly, wifi, free cancellation • Compare prices & reviews</p>
+          </footer>
+        </div>
+
+        <script type="module" src="src/main.js"></script>
+      </body>
+    </html>
