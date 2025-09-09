@@ -71,6 +71,17 @@
         </div>
       </form>
     </main>
+    <script>
+    function saveCity() {
+      const city = document.getElementById("to").value;
+      if (city) {
+        localStorage.setItem("selectedCity", city); // save to local storage
+        window.location.href = "options/index.html"; // go to page 2
+      } else {
+        alert("Please enter a city!");
+      }
+    }
+  </script>
 
     <!-- Google Places Autocomplete Script -->
     <script>
@@ -93,7 +104,24 @@
           selectedPlace = toAutocomplete.getPlace();
         });
       }
+      // Format return date input as dd/mm/yyyy with slashes
+      function formatDateInput(input) {
+        let value = input.value.replace(/\D/g, ''); // Only digits
+        if (value.length > 8) value = value.slice(0, 8); // Max 8 digits
 
+        let formatted = '';
+        if (value.length > 0) {
+          formatted += value.substring(0, 2);
+        }
+        if (value.length > 2) {
+          formatted += '/' + value.substring(2, 4);
+        }
+        if (value.length > 4) {
+          formatted += '/' + value.substring(4, 8);
+        }
+
+        input.value = formatted;
+      }
       document.addEventListener("DOMContentLoaded", () => {
         const form = document.getElementById("plannerForm");
         const errorDiv = document.getElementById("errorMessages");
@@ -164,11 +192,15 @@
           }
 
           // Redirect if no errors
-          const destination =
-            selectedPlace.formatted_address || selectedPlace.name;
-          window.location.href = `options/index.html?destination=${encodeURIComponent(
-            destination
-          )}&returnDate=${encodeURIComponent(returnDateValue)}`;
+const destination = selectedPlace.formatted_address || selectedPlace.name;
+
+// ✅ Save city to localStorage
+localStorage.setItem("selectedCity", destination);
+
+// Redirect to options page
+window.location.href = `options/index.html?destination=${encodeURIComponent(
+  destination
+)}&returnDate=${encodeURIComponent(returnDateValue)}`;
         });
       });
     </script>
