@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Wanderly — Explore & Plan</title>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <!-- Google Identity Services -->
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+      </head>
+      <body>
+        <header class="site-header" role="banner">
+          <div class="header-inner container">
+            <div class="logo">
+              <a href="#" aria-label="Wanderly home">Wanderly</a>
+            </div>
+
+            <nav class="nav" aria-label="Main navigation">
+              <a class="nav-link" href="#plan">Plan</a>
+              <a class="nav-link" href="#contact">Contact</a>
+            </nav>
+
+            <div class="spacer" aria-hidden="true"></div>
+
+            <div class="actions">
+              <button id="authBtn" class="btn-outline header-btn" title="Sign in or sign up">Sign In</button>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <section class="landing-hero" id="hero" aria-label="Landing hero">
+            <div id="heroBG" class="hero-bg"></div>
+
+            <div class="hero-inner container">
+              <div class="hero-left">
+                <h1 class="hero-title">Find your next great escape</h1>
+                <p class="hero-sub">Curated destinations, immersive experiences, and smart tools to plan the trip of your dreams.</p>
+
+                <div class="cta-row">
+                  <a id="exploreBtn" class="cta primary" href="explore/index.html">Explore Destinations</a>
+                  <a id="planBtn" class="cta ghost" href="trip/index.html">Plan a Trip</a>
+                </div>
+
+                <div class="stats-row" aria-hidden="true">
+                  <div class="stat">
+                    <strong class="stat-value" data-target="120">0</strong>
+                    <span>Destinations</span>
+                  </div>
+                  <div class="stat">
+                    <strong class="stat-value" data-target="350">0</strong>
+                    <span>Trips Curated</span>
+                  </div>
+                  <div class="stat">
+                    <strong class="stat-value" data-target="12">0</strong>
+                    <span>Years Exploring</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-right" aria-hidden="true">
+                <div class="card card-main" data-tilt>
+                  <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=60&auto=format&fit=crop" alt="Scenic destination" />
+                  <div class="card-info">
+                    <h3>Coastal Retreats</h3>
+                    <p>Handpicked beaches & coastal trails</p>
+                  </div>
+                </div>
+
+                <div class="card card-sub" data-tilt>
+                  <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=60&auto=format&fit=crop" alt="Mountains" />
+                  <div class="card-info">
+                    <h3>Mountain Escapes</h3>
+                    <p>Guided hikes & alpine stays</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="floating-orb" aria-hidden="true"></div>
+          </section>
+
+          <!-- Explore section intentionally omitted -->
+
+          <section id="plan" class="section container">
+            <!-- All content removed per request -->
+          </section>
+
+          <section id="contact" class="section container">
+            <h2>Contact</h2>
+            <p>Questions or partnership inquiries? Reach out.</p>
+
+            <div class="contact-grid">
+              <div class="contact-card">
+                <h4>Email</h4>
+                <a href="mailto:hello@wanderly.example">hello@wanderly.example</a>
+              </div>
+
+              <div class="contact-card">
+                <h4>Phone</h4>
+                <p>+1 (555) 123-4567</p>
+              </div>
+
+              <div class="contact-card">
+                <h4>Follow</h4>
+                <p><a href="#">Instagram</a> · <a href="#">Twitter</a> · <a href="#">Facebook</a></p>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="site-footer">
+          <div class="container footer-inner">
+            <p>© <span id="year"></span> Wanderly. All rights reserved.</p>
+
+            <div class="footer-actions">
+              <button id="feedbackBtn" class="feedback-btn">Send Feedback</button>
+            </div>
+          </div>
+
+          <div id="feedbackPanel" class="feedback-panel" aria-hidden="true">
+            <form id="feedbackForm" class="feedback-form" novalidate>
+              <label for="fbText">Your feedback</label>
+              <textarea id="fbText" name="feedback" rows="5" placeholder="Tell us what you liked or how we can improve..." required></textarea>
+
+              <div class="fb-row">
+                <input id="fbEmail" type="email" placeholder="Email (optional)" />
+                <div class="fb-actions">
+                  <button type="submit" class="btn">Submit</button>
+                  <button type="button" id="fbClose" class="btn-outline">Close</button>
+                </div>
+              </div>
+
+              <p class="fb-note">Feedback is stored locally for this demo.</p>
+            </form>
+          </div>
+        </footer>
+
+        <!-- Auth modal (shown on load) -->
+        <div id="authBackdrop" class="auth-backdrop" aria-hidden="true"></div>
+
+        <div id="authModal" class="auth-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="authTitle">
+          <div class="auth-card">
+            <header class="auth-head">
+              <h2 id="authTitle">Welcome to Wanderly</h2>
+              <button id="authClose" class="auth-close" aria-label="Close">×</button>
+            </header>
+
+            <div class="auth-body">
+              <div class="tabs" role="tablist">
+                <button id="tabSignIn" role="tab" aria-selected="true" class="tab">Sign In</button>
+                <button id="tabSignUp" role="tab" aria-selected="false" class="tab">Sign Up</button>
+              </div>
+
+              <div class="forms">
+                <form id="signInForm" class="form" aria-hidden="false" autocomplete="on">
+                  <label class="field"><span class="label-text">Email</span><input id="signinEmail" type="email" required placeholder="you@example.com" /></label>
+                  <label class="field"><span class="label-text">Password</span><input id="signinPassword" type="password" required placeholder="Your password" /></label>
+                  <div class="form-row">
+                    <button class="btn" type="submit">Sign In</button>
+                    <button type="button" class="btn-outline" id="forgotBtn">Forgot</button>
+                  </div>
+                </form>
+
+                <form id="signUpForm" class="form" aria-hidden="true" autocomplete="on">
+                  <label class="field"><span class="label-text">Full name</span><input id="signupName" type="text" required placeholder="Alex Rivera" /></label>
+                  <label class="field"><span class="label-text">Email</span><input id="signupEmail" type="email" required placeholder="you@example.com" /></label>
+                  <label class="field"><span class="label-text">Password</span><input id="signupPassword" type="password" required placeholder="Create a password" /></label>
+                  <div class="form-row">
+                    <button class="btn" type="submit">Create account</button>
+                    <button type="button" class="btn-outline" id="cancelSignup">Cancel</button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="divider"><span>or</span></div>
+
+              <div class="social">
+                <div id="googleSignInDiv" class="google-btn" aria-hidden="false"></div>
+                <button id="fakeGoogle" class="btn google-fallback" aria-hidden="true">Continue with Google</button>
+              </div>
+
+              <p class="auth-note">By continuing you agree to our Terms and Privacy Policy.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="ariaAnnouncements" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+        <script type="module" src="js/main.js"></script>
+      </body>
+    </html>
